@@ -184,6 +184,10 @@ nav:focus {
 }
 
 .gk-mainnav__link .kern-icon {
+    flex: none;
+    /* The link is top aligned because titles may wrap: centre the icon on the capital letters of the first line */
+    margin-top: 0.15em;
+    margin-top: calc((1lh - var(--kern-metric-dimension-default, 24px)) / 2 + 0.12em);
     background-color: currentcolor;
 }
 
