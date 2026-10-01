@@ -717,6 +717,11 @@ nav:focus {
     background-color: var(--gk-color-tint);
 }
 
+/* Label/value tables (row header + one cell): same label width in every table, so stacked tables line up */
+.gk-richtext .kern-table__row > th[scope="row"]:first-child:nth-last-child(2) {
+    width: 40%;
+}
+
 /* RTE style classes offered by the CKEditor preset "gsb_kern" (Configuration/RTE/GsbKern.yaml) */
 .gk-richtext .introtext {
     font-size: var(--kern-typography-font-size-large-static, 21px);
@@ -922,6 +927,8 @@ nav:focus {
 .gk-tile__media img {
     width: 100%;
     aspect-ratio: 16 / 9;
+    /* wide tiles (two per row) keep the image height of narrow ones instead of enlarging the image */
+    max-height: 12rem;
     object-fit: cover;
 }
 
