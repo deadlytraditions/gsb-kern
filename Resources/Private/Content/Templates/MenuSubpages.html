@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>Pages (subpages / pages of a category) as KERN cards; the card title is one level below the element header.</f:comment>
+<f:layout name="Default" />
+<f:section name="Main">
+    <f:if condition="{menu}">
+        <ul class="gk-cards">
+            <f:for each="{menu}" as="page">
+                <li class="kern-card kern-card--interactive">
+                    <div class="kern-card__container">
+                        <div class="kern-card__header">
+                            <f:if condition="{data.header}">
+                                <f:then><h3 class="kern-title"><a class="kern-link kern-link--stretched" href="{page.link}">{page.title}</a></h3></f:then>
+                                <f:else><h2 class="kern-title"><a class="kern-link kern-link--stretched" href="{page.link}">{page.title}</a></h2></f:else>
+                            </f:if>
+                        </div>
+                        <f:variable name="teaser">{f:if(condition: page.data.abstract, then: page.data.abstract, else: page.data.description)}</f:variable>
+                        <f:if condition="{teaser}">
+                            <div class="kern-card__body"><p class="kern-body">{teaser}</p></div>
+                        </f:if>
+                    </div>
+                </li>
+            </f:for>
+        </ul>
+    </f:if>
+</f:section>
+</html>

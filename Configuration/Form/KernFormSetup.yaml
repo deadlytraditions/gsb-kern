@@ -1,0 +1,27 @@
+# EXT:form in KERN markup: our templates on top of core (0/10) and GSB (200), registered in ext_localconf.php (130).
+prototypes:
+  standard:
+    formElementsDefinition:
+      Form:
+        renderingOptions:
+          templateRootPaths:
+            300: 'EXT:gsb_kern/Resources/Private/Form/Templates/'
+          partialRootPaths:
+            300: 'EXT:gsb_kern/Resources/Private/Form/Partials/'
+      GridRow:
+        properties:
+          elementClassAttribute: 'kern-row'
+          gridColumnClassAutoConfiguration:
+            viewPorts:
+              xs:
+                classPattern: 'kern-col-{@numbersOfColumnsToUse}'
+              sm:
+                classPattern: 'kern-col-sm-{@numbersOfColumnsToUse}'
+              md:
+                classPattern: 'kern-col-md-{@numbersOfColumnsToUse}'
+              lg:
+                classPattern: 'kern-col-lg-{@numbersOfColumnsToUse}'
+              xl:
+                classPattern: 'kern-col-xl-{@numbersOfColumnsToUse}'
+              xxl:
+                classPattern: 'kern-col-xxl-{@numbersOfColumnsToUse}'

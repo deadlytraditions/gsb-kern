@@ -1,0 +1,8 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{validationResults.errors}">
+    <p class="kern-error" id="{element.uniqueIdentifier}-error" role="alert">
+        <span class="kern-icon kern-icon--danger" aria-hidden="true"></span>
+        <span class="kern-body"><span class="kern-sr-only">{f:translate(key: 'form.error', extensionName: 'gsb_kern')}: </span><f:for each="{validationResults.errors}" as="error" iteration="i">{formvh:translateElementError(element: element, error: error)}<f:if condition="!{i.isLast}"> </f:if></f:for></span>
+    </p>
+</f:if>
+</html>

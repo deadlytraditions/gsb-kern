@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:gsb_kern/Resources/Private/Language/locallang.xlf" product-name="gsb_kern">
+        <body>
+            <trans-unit id="skip.content"><source>Skip to content</source><target>Zum Inhalt springen</target></trans-unit>
+            <trans-unit id="skip.navigation"><source>Skip to main navigation</source><target>Zur Hauptnavigation springen</target></trans-unit>
+            <trans-unit id="kopfzeile"><source>Official website of the Federal Republic of Germany</source><target>Offizielle Website – Bundesrepublik Deutschland</target></trans-unit>
+            <trans-unit id="brand.home"><source>Home page</source><target>Startseite</target></trans-unit>
+            <trans-unit id="nav.main"><source>Main navigation</source><target>Hauptnavigation</target></trans-unit>
+            <trans-unit id="nav.meta"><source>Service navigation</source><target>Servicenavigation</target></trans-unit>
+            <trans-unit id="nav.section"><source>Navigation in this section</source><target>Navigation in diesem Bereich</target></trans-unit>
+            <trans-unit id="nav.breadcrumb"><source>You are here</source><target>Sie sind hier</target></trans-unit>
+            <trans-unit id="nav.language"><source>Language</source><target>Sprache</target></trans-unit>
+            <trans-unit id="nav.footer"><source>Information</source><target>Informationen</target></trans-unit>
+            <trans-unit id="nav.legal"><source>Legal</source><target>Rechtliches</target></trans-unit>
+            <trans-unit id="nav.toggle"><source>Menu</source><target>Menü</target></trans-unit>
+            <trans-unit id="nav.search"><source>Search</source><target>Suche</target></trans-unit>
+            <trans-unit id="nav.submenu"><source>Subpages of %s</source><target>Unterseiten von %s</target></trans-unit>
+            <trans-unit id="footer.toTop"><source>Back to top</source><target>Nach oben</target></trans-unit>
+            <trans-unit id="box.box-info"><source>Information</source><target>Information</target></trans-unit>
+            <trans-unit id="box.box-success"><source>Note</source><target>Hinweis</target></trans-unit>
+            <trans-unit id="box.box-warning"><source>Warning</source><target>Warnung</target></trans-unit>
+            <trans-unit id="box.box-danger"><source>Danger</source><target>Gefahr</target></trans-unit>
+            <trans-unit id="media.copyright"><source>Copyright</source><target>Bildrechte</target></trans-unit>
+            <trans-unit id="uploads.download"><source>Download</source><target>Herunterladen</target></trans-unit>
+            <trans-unit id="link.external"><source>opens in a new window</source><target>öffnet in neuem Fenster</target></trans-unit>
+            <trans-unit id="form.optional"><source>optional</source><target>optional</target></trans-unit>
+            <trans-unit id="form.error"><source>Error</source><target>Fehler</target></trans-unit>
+            <trans-unit id="form.summary"><source>Please check your entries</source><target>Bitte prüfen Sie Ihre Angaben</target></trans-unit>
+            <trans-unit id="form.selectedFile"><source>Selected file</source><target>Ausgewählte Datei</target></trans-unit>
+            <trans-unit id="context.label"><source>Further information on this topic</source><target>Weitere Informationen zum Thema</target></trans-unit>
+        </body>
+    </file>
+</xliff>

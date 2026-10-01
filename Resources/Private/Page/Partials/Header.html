@@ -1,0 +1,17 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>Service links top right, portal name right-aligned, main navigation as a bar below.</f:comment>
+<header class="gk-header">
+    <f:render partial="Kopfzeile" />
+    <div class="kern-container gk-header__bar">
+        <f:render partial="Navigation/Meta" arguments="{_all}" />
+        <div class="gk-header__brandrow">
+            <button type="button" class="kern-btn kern-btn--secondary gk-nav-toggle" aria-expanded="false" aria-controls="gk-mainnav" hidden>
+                <span class="kern-icon kern-icon--dehaze" aria-hidden="true"></span>
+                <span class="kern-label">{f:translate(key: 'nav.toggle', extensionName: 'gsb_kern')}</span>
+            </button>
+            <f:render partial="Brand" arguments="{site: site}" />
+        </div>
+    </div>
+    <f:render partial="Navigation/Main" arguments="{menuMain: menuMain, site: site}" />
+</header>
+</html>

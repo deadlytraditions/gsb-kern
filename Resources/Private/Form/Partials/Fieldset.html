@@ -1,0 +1,14 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<formvh:renderRenderable renderable="{element}">
+    <fieldset class="kern-fieldset gk-form__fieldset" id="{element.uniqueIdentifier}">
+        <f:if condition="{element.label}">
+            <legend class="kern-label kern-label--large">{formvh:translateElementProperty(element: element, property: 'label')}</legend>
+        </f:if>
+        <div class="kern-fieldset__body gk-form__fields">
+            <f:for each="{element.elements}" as="child">
+                <f:render partial="{child.templateName}" arguments="{element: child}" />
+            </f:for>
+        </div>
+    </fieldset>
+</formvh:renderRenderable>
+</html>

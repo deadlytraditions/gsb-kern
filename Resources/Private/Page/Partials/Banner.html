@@ -1,0 +1,11 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>Page banner from the page resources (inherited down the tree, levelmedia slide). Decorative, so empty alt; copyright as text.</f:comment>
+<f:if condition="{media.0}">
+    <div class="gk-banner{f:if(condition: stage, then: ' gk-banner--stage')}">
+        <f:image image="{media.0}" class="gk-banner__image" alt="" maxWidth="2560" loading="eager" />
+        <f:if condition="{media.0.originalFile.properties.copyright}">
+            <p class="gk-banner__copyright">© {media.0.originalFile.properties.copyright}</p>
+        </f:if>
+    </div>
+</f:if>
+</html>

@@ -1,0 +1,9 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>No carousel in KERN (and carousels are an accessibility liability): slides are rendered one after another.</f:comment>
+<f:layout name="Container" />
+<f:section name="Main">
+    <div class="gk-grid gk-grid--cols-1">
+        <f:for each="{children_101}" as="child"><div class="gk-grid__item"><f:format.raw>{child.renderedContent}</f:format.raw></div></f:for>
+    </div>
+</f:section>
+</html>

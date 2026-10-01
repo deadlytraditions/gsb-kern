@@ -1,0 +1,21 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<div class="kern-btn-wrapper gk-form__navigation">
+    <f:if condition="{form.previousPage}">
+        <f:form.button property="__currentPage" value="{form.previousPage.index}" formnovalidate="formnovalidate" class="kern-btn kern-btn--secondary">
+            <span class="kern-label">{formvh:translateElementProperty(element: form.currentPage, renderingOptionProperty: 'previousButtonLabel')}</span>
+        </f:form.button>
+    </f:if>
+    <f:if condition="{form.nextPage}">
+        <f:then>
+            <f:form.button property="__currentPage" value="{form.nextPage.index}" class="kern-btn kern-btn--primary">
+                <span class="kern-label">{formvh:translateElementProperty(element: form.currentPage, renderingOptionProperty: 'nextButtonLabel')}</span>
+            </f:form.button>
+        </f:then>
+        <f:else>
+            <f:form.button property="__currentPage" value="{form.pages -> f:count()}" class="kern-btn kern-btn--primary">
+                <span class="kern-label">{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}</span>
+            </f:form.button>
+        </f:else>
+    </f:if>
+</div>
+</html>

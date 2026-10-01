@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="EXT:gsb_kern/Resources/Private/Language/locallang.xlf" product-name="gsb_kern">
+        <body>
+            <trans-unit id="skip.content"><source>Skip to content</source></trans-unit>
+            <trans-unit id="skip.navigation"><source>Skip to main navigation</source></trans-unit>
+            <trans-unit id="kopfzeile"><source>Official website of the Federal Republic of Germany</source></trans-unit>
+            <trans-unit id="brand.home"><source>Home page</source></trans-unit>
+            <trans-unit id="nav.main"><source>Main navigation</source></trans-unit>
+            <trans-unit id="nav.meta"><source>Service navigation</source></trans-unit>
+            <trans-unit id="nav.section"><source>Navigation in this section</source></trans-unit>
+            <trans-unit id="nav.breadcrumb"><source>You are here</source></trans-unit>
+            <trans-unit id="nav.language"><source>Language</source></trans-unit>
+            <trans-unit id="nav.footer"><source>Information</source></trans-unit>
+            <trans-unit id="nav.legal"><source>Legal</source></trans-unit>
+            <trans-unit id="nav.toggle"><source>Menu</source></trans-unit>
+            <trans-unit id="nav.search"><source>Search</source></trans-unit>
+            <trans-unit id="nav.submenu"><source>Subpages of %s</source></trans-unit>
+            <trans-unit id="footer.toTop"><source>Back to top</source></trans-unit>
+            <trans-unit id="box.box-info"><source>Information</source></trans-unit>
+            <trans-unit id="box.box-success"><source>Note</source></trans-unit>
+            <trans-unit id="box.box-warning"><source>Warning</source></trans-unit>
+            <trans-unit id="box.box-danger"><source>Danger</source></trans-unit>
+            <trans-unit id="media.copyright"><source>Copyright</source></trans-unit>
+            <trans-unit id="uploads.download"><source>Download</source></trans-unit>
+            <trans-unit id="link.external"><source>opens in a new window</source></trans-unit>
+            <trans-unit id="form.optional"><source>optional</source></trans-unit>
+            <trans-unit id="form.error"><source>Error</source></trans-unit>
+            <trans-unit id="form.summary"><source>Please check your entries</source></trans-unit>
+            <trans-unit id="form.selectedFile"><source>Selected file</source></trans-unit>
+            <trans-unit id="context.label"><source>Further information on this topic</source></trans-unit>
+        </body>
+    </file>
+</xliff>

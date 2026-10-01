@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>header_layout 1–6 = h1–h6; GSB's 7–12 = visually hidden h1–h6. The page title is the h1, so content should start at 2.</f:comment>
+<f:variable name="content"><f:if condition="{link}"><f:then><f:link.typolink parameter="{link}" class="kern-link">{header}</f:link.typolink></f:then><f:else>{header}</f:else></f:if></f:variable>
+<f:switch expression="{layout}">
+    <f:case value="1"><h1 class="{f:if(condition: titleClass, then: titleClass, else: 'kern-heading-x-large')}">{content -> f:format.raw()}</h1></f:case>
+    <f:case value="2"><h2 class="{f:if(condition: titleClass, then: titleClass, else: 'kern-heading-large')}">{content -> f:format.raw()}</h2></f:case>
+    <f:case value="3"><h3 class="{f:if(condition: titleClass, then: titleClass, else: 'kern-heading-medium')}">{content -> f:format.raw()}</h3></f:case>
+    <f:case value="4"><h4 class="{f:if(condition: titleClass, then: titleClass, else: 'kern-heading-small')}">{content -> f:format.raw()}</h4></f:case>
+    <f:case value="5"><h5 class="{f:if(condition: titleClass, then: titleClass, else: 'kern-heading-small')}">{content -> f:format.raw()}</h5></f:case>
+    <f:case value="6"><h6 class="{f:if(condition: titleClass, then: titleClass, else: 'kern-heading-small')}">{content -> f:format.raw()}</h6></f:case>
+    <f:case value="7"><h1 class="kern-sr-only">{header}</h1></f:case>
+    <f:case value="8"><h2 class="kern-sr-only">{header}</h2></f:case>
+    <f:case value="9"><h3 class="kern-sr-only">{header}</h3></f:case>
+    <f:case value="10"><h4 class="kern-sr-only">{header}</h4></f:case>
+    <f:case value="11"><h5 class="kern-sr-only">{header}</h5></f:case>
+    <f:case value="12"><h6 class="kern-sr-only">{header}</h6></f:case>
+    <f:defaultCase><h2 class="{f:if(condition: titleClass, then: titleClass, else: 'kern-heading-large')}">{content -> f:format.raw()}</h2></f:defaultCase>
+</f:switch>
+</html>

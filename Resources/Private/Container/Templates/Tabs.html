@@ -1,0 +1,16 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>KERN has no tab component; tabs are rendered as an accordion (same content, fully accessible without JS).</f:comment>
+<f:layout name="Container" />
+<f:section name="Main">
+    <div class="gk-accordion">
+        <f:for each="{children_101}" as="record" iteration="iterator">
+            <details class="kern-accordion"{f:if(condition: iterator.isFirst, then: ' open')}>
+                <summary class="kern-accordion__header"><span class="kern-title">{record.header}</span></summary>
+                <div class="kern-accordion__body">
+                    <f:cObject typoscriptObjectPath="lib.gsbKern.childWithoutHeader" data="{record}" />
+                </div>
+            </details>
+        </f:for>
+    </div>
+</f:section>
+</html>

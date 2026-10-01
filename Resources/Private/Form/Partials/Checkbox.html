@@ -1,0 +1,17 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<formvh:renderRenderable renderable="{element}">
+    <f:form.validationResults for="{element.rootForm.identifier}.{element.identifier}">
+        <f:variable name="describedBy"><f:if condition="{element.properties.elementDescription}">{element.uniqueIdentifier}-hint </f:if><f:if condition="{validationResults.errors}">{element.uniqueIdentifier}-error</f:if></f:variable>
+        <f:if condition="{validationResults.errors}">
+            <f:then><f:variable name="aria" value="{invalid: 'true', describedby: describedBy}" /></f:then>
+            <f:else if="{describedBy}"><f:variable name="aria" value="{describedby: describedBy}" /></f:else>
+        </f:if>
+        <div class="kern-form-check{f:if(condition: validationResults.errors, then: ' kern-form-check--error')}">
+            <f:form.checkbox property="{element.identifier}" value="{element.properties.value}" id="{element.uniqueIdentifier}" class="kern-form-check__checkbox" errorClass="kern-form-check__checkbox--error" aria="{aria}" additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}" />
+            <f:render partial="Field/Label" arguments="{element: element}" />
+            <f:render partial="Field/Hint" arguments="{element: element}" />
+            <f:render partial="Field/Errors" arguments="{element: element, validationResults: validationResults}" />
+        </div>
+    </f:form.validationResults>
+</formvh:renderRenderable>
+</html>

@@ -1,0 +1,67 @@
+# Backend layouts of the tenant. The key is also the Fluid page template name (pagets__TwoColumns → TwoColumns.html).
+# colPos follow GSB (0 = Top, 1 = Main, 2 = Bottom, rendered as full-width band); 3 = Sidebar is ours.
+mod.web_layout.BackendLayouts {
+  Home {
+    title = LLL:EXT:gsb_kern/Resources/Private/Language/locallang_db.xlf:backend_layout.home
+    icon = EXT:gsb_core/Resources/Public/BackendLayouts/OneCol.svg
+    config.backend_layout {
+      colCount = 3
+      rowCount = 3
+      rows {
+        1.columns.1 {
+          name = LLL:EXT:gsb_kern/Resources/Private/Language/locallang_db.xlf:colPos.top
+          colPos = 0
+          colspan = 3
+        }
+        2.columns {
+          1 {
+            name = LLL:EXT:gsb_kern/Resources/Private/Language/locallang_db.xlf:colPos.main
+            colPos = 1
+            colspan = 2
+          }
+          2 {
+            name = LLL:EXT:gsb_kern/Resources/Private/Language/locallang_db.xlf:colPos.sidebar
+            colPos = 3
+          }
+        }
+        3.columns.1 {
+          name = LLL:EXT:gsb_kern/Resources/Private/Language/locallang_db.xlf:colPos.bottom
+          colPos = 2
+          colspan = 3
+        }
+      }
+    }
+  }
+
+  TwoColumns {
+    title = LLL:EXT:gsb_kern/Resources/Private/Language/locallang_db.xlf:backend_layout.two_columns
+    icon = EXT:gsb_core/Resources/Public/BackendLayouts/OneCol.svg
+    config.backend_layout {
+      colCount = 3
+      rowCount = 3
+      rows {
+        1.columns.1 {
+          name = LLL:EXT:gsb_kern/Resources/Private/Language/locallang_db.xlf:colPos.top
+          colPos = 0
+          colspan = 3
+        }
+        2.columns {
+          1 {
+            name = LLL:EXT:gsb_kern/Resources/Private/Language/locallang_db.xlf:colPos.main
+            colPos = 1
+            colspan = 2
+          }
+          2 {
+            name = LLL:EXT:gsb_kern/Resources/Private/Language/locallang_db.xlf:colPos.sidebar
+            colPos = 3
+          }
+        }
+        3.columns.1 {
+          name = LLL:EXT:gsb_kern/Resources/Private/Language/locallang_db.xlf:colPos.bottom
+          colPos = 2
+          colspan = 3
+        }
+      }
+    }
+  }
+}

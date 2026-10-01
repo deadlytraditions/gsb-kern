@@ -1,0 +1,17 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>Text with images; also used for textmedia. Position modifiers: above/below/intext × left/center/right, nowrap = side by side.</f:comment>
+<f:layout name="Default" />
+<f:section name="Main">
+    <div class="gk-textpic gk-textpic--{gallery.position.vertical} gk-textpic--{gallery.position.horizontal}{f:if(condition: gallery.position.noWrap, then: ' gk-textpic--nowrap')}">
+        <f:if condition="{gallery.position.vertical} != 'below'">
+            <f:render partial="Media/Gallery" arguments="{_all}" />
+        </f:if>
+        <f:if condition="{data.bodytext}">
+            <div class="gk-textpic__text gk-richtext"><f:format.html>{data.bodytext}</f:format.html></div>
+        </f:if>
+        <f:if condition="{gallery.position.vertical} == 'below'">
+            <f:render partial="Media/Gallery" arguments="{_all}" />
+        </f:if>
+    </div>
+</f:section>
+</html>

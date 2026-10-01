@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<formvh:renderRenderable renderable="{page}">
+    <f:if condition="{page.label}">
+        <h2 class="kern-heading-medium">{formvh:translateElementProperty(element: page, property: 'label')}</h2>
+    </f:if>
+    <dl class="kern-description-list">
+        <formvh:renderAllFormValues renderable="{page.rootForm}" as="formValue">
+            <f:if condition="!{formValue.isSection}">
+                <div class="kern-description-list-item">
+                    <dt class="kern-description-list-item__key">{formvh:translateElementProperty(element: formValue.element, property: 'label')}</dt>
+                    <dd class="kern-description-list-item__value">
+                        <f:if condition="{formValue.value}">
+                            <f:then>
+                                <f:if condition="{formValue.isMultiValue}">
+                                    <f:then><f:for each="{formValue.processedValue}" as="value" iteration="i">{value}<f:if condition="!{i.isLast}">, </f:if></f:for></f:then>
+                                    <f:else><f:format.nl2br>{formValue.processedValue}</f:format.nl2br></f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>–</f:else>
+                        </f:if>
+                    </dd>
+                </div>
+            </f:if>
+        </formvh:renderAllFormValues>
+    </dl>
+</formvh:renderRenderable>
+</html>

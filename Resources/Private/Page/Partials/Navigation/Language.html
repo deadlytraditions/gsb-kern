@@ -1,0 +1,14 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>Links to the other languages; without a translation (strict mode) to that language's home page.</f:comment>
+<f:for each="{languagenavigation}" as="language">
+    <f:if condition="!{language.active}">
+        <li>
+            <f:variable name="href">{f:if(condition: language.available, then: language.link, else: '{f:uri.page(pageUid: site.rootPageId, language: language.languageId)}')}</f:variable>
+            <a class="kern-link kern-link--small gk-meta__link" href="{href}" hreflang="{language.hreflang}" lang="{language.twoLetterIsoCode}">
+                <span class="kern-icon kern-icon--language" aria-hidden="true"></span>
+                {language.navigationTitle}
+            </a>
+        </li>
+    </f:if>
+</f:for>
+</html>

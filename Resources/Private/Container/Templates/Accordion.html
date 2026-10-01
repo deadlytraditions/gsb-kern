@@ -1,0 +1,25 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>KERN accordion (native details/summary). container_headline: heading level of the summaries (0 = none).</f:comment>
+<f:layout name="Container" />
+<f:section name="Main">
+    <div class="gk-accordion">
+        <f:for each="{children_101}" as="record" iteration="iterator">
+            <details class="kern-accordion"{f:if(condition: '{data.container_accordion_toggle} == 1 && {iterator.cycle} == {data.container_accordion_open}', then: ' open')}>
+                <summary class="kern-accordion__header">
+                    <f:switch expression="{data.container_headline}">
+                        <f:case value="2"><h2 class="kern-title">{record.header}</h2></f:case>
+                        <f:case value="3"><h3 class="kern-title">{record.header}</h3></f:case>
+                        <f:case value="4"><h4 class="kern-title">{record.header}</h4></f:case>
+                        <f:case value="5"><h5 class="kern-title">{record.header}</h5></f:case>
+                        <f:case value="6"><h6 class="kern-title">{record.header}</h6></f:case>
+                        <f:defaultCase><span class="kern-title">{record.header}</span></f:defaultCase>
+                    </f:switch>
+                </summary>
+                <div class="kern-accordion__body">
+                    <f:cObject typoscriptObjectPath="lib.gsbKern.childWithoutHeader" data="{record}" />
+                </div>
+            </details>
+        </f:for>
+    </div>
+</f:section>
+</html>

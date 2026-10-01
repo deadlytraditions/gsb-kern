@@ -1,0 +1,76 @@
+# CKEditor preset for the KERN frontend. Editor settings follow GSB's preset (EXT:gsb_core/Configuration/RTE/Default.yaml);
+# not imported because YAML imports can't drop list entries and GSB's Bootstrap styles have no KERN counterpart.
+# Style classes (intro text, warning, link list, button) are rendered by .gk-richtext in Resources/Public/Css/gsb-kern.css.
+imports:
+  - {resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml"}
+  - {resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml"}
+  - {resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml"}
+
+editor:
+  config:
+    contentsCss:
+      - "EXT:gsb_core/Configuration/RTE/darkmode.css"
+    debug: false
+    defaultContentLanguage: "de"
+    defaultLanguage: "de"
+
+    importModules:
+      - {module: '@ckeditor/ckeditor5-language-translations.js', exports: []}
+      - {module: '@ckeditor/ckeditor5-language', exports: ['TextPartLanguage']}
+      - {module: '@itzbund/gsb-core/ckeditor/plugin/special-characters-greek.js', exports: ['SpecialCharactersGreek']}
+
+    # h1 is the page title, content headers start at h2
+    heading:
+      options:
+        - {model: "paragraph", title: "Paragraph"}
+        - {model: "heading2", view: "h2", title: "Heading 2"}
+        - {model: "heading3", view: "h3", title: "Heading 3"}
+        - {model: "heading4", view: "h4", title: "Heading 4"}
+
+    style:
+      definitions:
+        - {name: "Einleitung / Intro text", element: "p", classes: ["introtext"]}
+        - {name: "Hinweis / Warning", element: "p", classes: ["warning"]}
+        - {name: "Linkliste / Link list", element: "ul", classes: ["link-list"]}
+        - {name: "Button", element: "a", classes: ["btn"]}
+
+    toolbar:
+      items:
+        - heading
+        - style
+        - "|"
+        - textPartLanguage
+        - "|"
+        - bold
+        - italic
+        - link
+        - bulletedList
+        - numberedList
+        - "|"
+        - blockQuote
+        - "|"
+        - undo
+        - redo
+        - removeFormat
+        - "|"
+        - insertTable
+        - superscript
+        - subscript
+        - "|"
+        - specialCharacters
+        - sourceEditing
+        - findAndReplace
+
+    table:
+      defaultHeadings: {rows: 1}
+      contentToolbar:
+        - tableColumn
+        - tableRow
+        - mergeTableCells
+        - toggleTableCaption
+
+    language:
+      ui: "de"
+      textPartLanguage:
+        - {title: "Deutsch", languageCode: "de"}
+        - {title: "English", languageCode: "en"}

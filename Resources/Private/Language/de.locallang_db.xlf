@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:gsb_kern/Resources/Private/Language/locallang_db.xlf" product-name="gsb_kern">
+        <body>
+            <trans-unit id="backend_layout.home"><source>Home page</source><target>Startseite</target></trans-unit>
+            <trans-unit id="backend_layout.two_columns"><source>Content with sidebar</source><target>Inhalt mit Randspalte</target></trans-unit>
+            <trans-unit id="colPos.top"><source>Top</source><target>Oben</target></trans-unit>
+            <trans-unit id="colPos.main"><source>Main</source><target>Hauptinhalt</target></trans-unit>
+            <trans-unit id="colPos.sidebar"><source>Sidebar</source><target>Randspalte</target></trans-unit>
+            <trans-unit id="colPos.bottom"><source>Bottom</source><target>Unten</target></trans-unit>
+            <trans-unit id="frame_class.box-info"><source>Box: information (blue)</source><target>Box: Information (blau)</target></trans-unit>
+            <trans-unit id="frame_class.box-success"><source>Box: success (green)</source><target>Box: Erfolg (grün)</target></trans-unit>
+            <trans-unit id="frame_class.box-warning"><source>Box: warning (orange)</source><target>Box: Warnung (orange)</target></trans-unit>
+            <trans-unit id="frame_class.box-danger"><source>Box: danger (red)</source><target>Box: Gefahr (rot)</target></trans-unit>
+            <trans-unit id="frame_class.surface"><source>Background: surface</source><target>Hintergrund: Fläche</target></trans-unit>
+        </body>
+    </file>
+</xliff>

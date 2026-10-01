@@ -1,0 +1,20 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<nav class="gk-meta" aria-label="{f:translate(key: 'nav.meta', extensionName: 'gsb_kern')}">
+    <ul class="gk-meta__list">
+        <f:for each="{menuMetaTop}" as="item">
+            <li>
+                <a class="kern-link kern-link--small gk-meta__link" href="{item.link}"{f:if(condition: item.current, then: ' aria-current="page"')}>
+                    <f:if condition="{item.data.uid} == {site.configuration.settings.accessability.simpleLanguagePage}">
+                        <span class="kern-icon kern-icon--easy-language" aria-hidden="true"></span>
+                    </f:if>
+                    <f:if condition="{item.data.uid} == {site.configuration.settings.accessability.signLanguagePage}">
+                        <span class="kern-icon kern-icon--sign-language" aria-hidden="true"></span>
+                    </f:if>
+                    {item.title}
+                </a>
+            </li>
+        </f:for>
+        <f:render partial="Navigation/Language" arguments="{languagenavigation: languagenavigation, site: site}" />
+    </ul>
+</nav>
+</html>

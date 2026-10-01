@@ -1,0 +1,39 @@
+lib {
+  parseFunc_RTE {
+    # GSB wraps every link in <span class="icon">; KERN links carry no icon markup
+    tags {
+      a.typolink.wrap >
+      link.typolink.wrap >
+    }
+
+    externalBlocks {
+      pre.stdWrap.parseFunc.tags {
+        a.typolink.wrap >
+        link.typolink.wrap >
+      }
+
+      # RTE tables → KERN table, horizontally scrollable on small screens
+      table.stdWrap {
+        wrap = <div class="kern-table-responsive gk-table" tabindex="0">|</div>
+        HTMLparser.tags {
+          table.fixAttrib.class >
+          table.fixAttrib.class {
+            set = kern-table kern-table--striped
+          }
+
+          caption.fixAttrib.class.set = kern-title
+          thead.fixAttrib.class.set = kern-table__head
+          tbody.fixAttrib.class.set = kern-table__body
+          tr.fixAttrib.class.set = kern-table__row
+          th.fixAttrib.class.set = kern-table__header
+          td.fixAttrib.class.set = kern-table__cell
+        }
+      }
+    }
+  }
+
+  parseFunc_RTE_noEncapsLines < lib.parseFunc_RTE
+  parseFunc_RTE_noEncapsLines {
+    nonTypoTagStdWrap.encapsLines >
+  }
+}

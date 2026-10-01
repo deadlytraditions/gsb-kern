@@ -1,0 +1,61 @@
+lib {
+  # KERN templates for content elements, on top of fluid_styled_content (0/10) and GSB (200/300/400) paths.
+  # tt_content.<CType> are references (=<) to these libs, so the paths apply to all elements.
+  contentElement {
+    templateRootPaths.500 = EXT:gsb_kern/Resources/Private/Content/Templates/
+    partialRootPaths.500 = EXT:gsb_kern/Resources/Private/Content/Partials/
+    layoutRootPaths.500 = EXT:gsb_kern/Resources/Private/Content/Layouts/
+  }
+
+  gsbContentElement {
+    templateRootPaths.500 = EXT:gsb_kern/Resources/Private/Content/Templates/
+    partialRootPaths.500 = EXT:gsb_kern/Resources/Private/Content/Partials/
+    layoutRootPaths.500 = EXT:gsb_kern/Resources/Private/Content/Layouts/
+  }
+
+  containerContentElement {
+    templateRootPaths.500 = EXT:gsb_kern/Resources/Private/Container/Templates/
+    partialRootPaths.500 = EXT:gsb_kern/Resources/Private/Content/Partials/
+    layoutRootPaths.500 = EXT:gsb_kern/Resources/Private/Content/Layouts/
+  }
+
+  gsbKern {
+    # Accordion/tabs show a child's header as the summary/tab label, so the child itself is rendered without it:
+    # Header/All.html skips the header of the element whose uid is in register:gkHideHeaderFor.
+    childWithoutHeader = COA
+    childWithoutHeader {
+      10 = LOAD_REGISTER
+      10.gkHideHeaderFor.field = uid
+      20 = RECORDS
+      20 {
+        tables = tt_content
+        source.field = uid
+      }
+
+      30 = RESTORE_REGISTER
+    }
+
+    hideHeaderFor = TEXT
+    hideHeaderFor.data = register:gkHideHeaderFor
+
+    # frame_class "box-warning" → KERN alert variant "warning"; empty for all other frames
+    boxVariant = TEXT
+    boxVariant {
+      field = frame_class
+      replacement.10 {
+        search = box-
+        replace =
+      }
+
+      if {
+        value = box-info,box-success,box-warning,box-danger
+        isInList.field = frame_class
+      }
+    }
+  }
+}
+
+tt_content {
+  ce_accordion.dataProcessing.1597060000.skipRenderingChildContent = 1
+  ce_tabs.dataProcessing.1597060000.skipRenderingChildContent = 1
+}

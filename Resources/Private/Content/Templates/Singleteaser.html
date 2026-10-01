@@ -1,0 +1,32 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    GSB teaser (gsb_singleteaser) as a tile: optional image, header (h3, or h4–h6 if set) linked to tx_link/header_link (the whole
+    tile is clickable), optional text. grid_bgcolor = GSB background colour from the site settings.
+</f:comment>
+<f:variable name="link">{f:if(condition: data.tx_link, then: data.tx_link, else: data.header_link)}</f:variable>
+<f:variable name="level">{f:if(condition: '{data.header_layout} > 3 && {data.header_layout} < 7', then: data.header_layout, else: 3)}</f:variable>
+<article id="c{data.uid}" class="gk-tile{f:if(condition: data.grid_bgcolor, then: ' gk-tile--{data.grid_bgcolor}')}{f:if(condition: link, then: ' gk-tile--linked')}">
+    <f:if condition="{files.0}">
+        <div class="gk-tile__media">
+            <f:image image="{files.0}" width="640c" height="360c" alt="{files.0.alternative}" loading="lazy" />
+        </div>
+    </f:if>
+    <div class="gk-tile__body">
+        <f:if condition="{data.header}">
+            <f:variable name="title"><f:if condition="{link}"><f:then><f:link.typolink parameter="{link}" class="gk-tile__link">{data.header}</f:link.typolink></f:then><f:else>{data.header}</f:else></f:if></f:variable>
+            <f:switch expression="{level}">
+                <f:case value="4"><h4 class="gk-tile__title">{title -> f:format.raw()}</h4></f:case>
+                <f:case value="5"><h5 class="gk-tile__title">{title -> f:format.raw()}</h5></f:case>
+                <f:case value="6"><h6 class="gk-tile__title">{title -> f:format.raw()}</h6></f:case>
+                <f:defaultCase><h3 class="gk-tile__title">{title -> f:format.raw()}</h3></f:defaultCase>
+            </f:switch>
+        </f:if>
+        <f:if condition="{data.bodytext}">
+            <div class="gk-richtext"><f:format.html>{data.bodytext}</f:format.html></div>
+        </f:if>
+        <f:if condition="{data.tx_link_text} && {link}">
+            <p class="gk-tile__more">{data.tx_link_text}</p>
+        </f:if>
+    </div>
+</article>
+</html>

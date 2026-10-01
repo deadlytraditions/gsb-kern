@@ -1,0 +1,39 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>Home page: stage image (page resources), portal title as h1, Top (0), Main (1) with Sidebar (3), Bottom (2) as band.</f:comment>
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <f:render partial="Banner" arguments="{media: media, stage: 1}" />
+    <main id="main" class="gk-main gk-home" tabindex="-1" aria-labelledby="page-title">
+        <div class="kern-container">
+            <f:variable name="subtitle">{f:translate(key: 'brand.subtitle', extensionName: 'gsb_kern')}</f:variable>
+            <hgroup class="gk-home__title">
+                <h1 id="page-title" class="gk-page-title">{f:translate(key: 'brand.title', extensionName: 'gsb_kern', default: site.configuration.websiteTitle)}</h1>
+                <f:if condition="{subtitle}"><p class="gk-home__subtitle">{subtitle}</p></f:if>
+            </hgroup>
+            <div class="kern-row">
+                <div class="kern-col-12 {f:if(condition: sidebar, then: 'kern-col-xl-8')} gk-content">
+                    <!--TYPO3SEARCH_begin-->
+                    <f:format.raw>{top}</f:format.raw>
+                    <f:format.raw>{main}</f:format.raw>
+                    <!--TYPO3SEARCH_end-->
+                </div>
+                <f:if condition="{sidebar}">
+                    <aside class="kern-col-12 kern-col-xl-4 gk-sidebar">
+                        <f:format.raw>{sidebar}</f:format.raw>
+                    </aside>
+                </f:if>
+            </div>
+        </div>
+        <f:if condition="{bottom}">
+            <section class="gk-context" aria-label="{f:translate(key: 'context.label', extensionName: 'gsb_kern')}">
+                <div class="kern-container">
+                    <!--TYPO3SEARCH_begin-->
+                    <f:format.raw>{bottom}</f:format.raw>
+                    <!--TYPO3SEARCH_end-->
+                </div>
+            </section>
+        </f:if>
+    </main>
+</f:section>
+</html>

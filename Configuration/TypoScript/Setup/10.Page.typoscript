@@ -1,0 +1,50 @@
+page {
+  # gsb-public-frontend assets are replaced by KERN (kept installed, only not delivered). Tenants add their theme
+  # (token values, fonts) as further includeCSS entries after these.
+  includeCSS {
+    screen >
+    print >
+    navigationTertiaryCss >
+    kern = EXT:gsb_kern/Resources/Public/Vendor/kern/kern.min.css
+    kernFonts = EXT:gsb_kern/Resources/Public/Vendor/kern/fonts/fira-sans.css
+    gsbKern = EXT:gsb_kern/Resources/Public/Css/gsb-kern.css
+    gsbKernPrint = EXT:gsb_kern/Resources/Public/Css/print.css
+    gsbKernPrint.media = print
+  }
+  includeJSFooter {
+    screen >
+    navigationTertiaryJs >
+    gsbKern = EXT:gsb_kern/Resources/Public/JavaScript/gsb-kern.js
+    gsbKern.defer = 1
+  }
+
+  bodyTagCObject.10.stdWrap.noTrimWrap = | class="| gk-body"|
+
+  # Tenants override single templates with a higher index (e.g. templateRootPaths.210)
+  10 {
+    templateRootPaths.200 = EXT:gsb_kern/Resources/Private/Page/Templates/
+    partialRootPaths.200 = EXT:gsb_kern/Resources/Private/Page/Partials/
+    layoutRootPaths.200 = EXT:gsb_kern/Resources/Private/Page/Layouts/
+
+    # Sidebar column of the Home/TwoColumns backend layouts
+    variables {
+      sidebar < styles.content.get
+      sidebar.select.where = colPos=3
+    }
+
+    dataProcessing {
+      # Second footer menu (Impressum, Datenschutz)
+      45 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      45 {
+        special = directory
+        special.value = {$gsbKern.navigation.legal-page}
+        levels = 1
+        as = menuLegal
+      }
+    }
+  }
+}
+
+# KERN follows prefers-color-scheme; pinned to light because the brand tokens (gsb-kern.css) only cover the light
+# theme and RTE content may carry inline colours that aren't checked for contrast on dark backgrounds.
+config.htmlTag.attributes.data-kern-theme = light

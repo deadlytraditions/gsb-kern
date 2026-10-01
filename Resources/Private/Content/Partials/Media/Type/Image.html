@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>Replaces GSB's Bootstrap modals/dropdowns: caption and copyright are shown as text. The picture element itself is GSB's Media/Rendering/Image partial.</f:comment>
+<f:comment>GSB has an own caption field; the core "Caption" of a file reference is its description</f:comment>
+<f:variable name="caption">{f:if(condition: file.properties.caption, then: file.properties.caption, else: file.description)}</f:variable>
+<f:variable name="copyright">{file.originalFile.properties.copyright}</f:variable>
+<figure class="gk-figure">
+    <f:render partial="Media/Rendering/Image" arguments="{file: file, dimensions: dimensions, settings: settings, data: data}" />
+    <f:if condition="{caption} || {copyright}">
+        <figcaption class="gk-figure__caption kern-body kern-body--small">
+            <f:if condition="{caption}"><span>{caption}</span></f:if>
+            <f:if condition="{copyright}"><span class="gk-figure__copyright"><span class="kern-sr-only">{f:translate(key: 'media.copyright', extensionName: 'gsb_kern')}: </span>© {copyright}</span></f:if>
+        </figcaption>
+    </f:if>
+</figure>
+</html>

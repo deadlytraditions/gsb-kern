@@ -1,0 +1,31 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>One column (service pages, error pages). Backend layout pagets__Default: Top (0), Main (1), Bottom (2).</f:comment>
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <f:render partial="Navigation/Breadcrumb" arguments="{breadcrumbMenu: breadcrumbMenu}" />
+    <f:render partial="Banner" arguments="{media: media}" />
+    <main id="main" class="gk-main" tabindex="-1" aria-labelledby="page-title">
+        <div class="kern-container">
+            <div class="kern-row">
+                <div class="kern-col-12 kern-col-lg-8 gk-content">
+                    <f:render partial="PageTitle" arguments="{_all}" />
+                    <!--TYPO3SEARCH_begin-->
+                    <f:format.raw>{top}</f:format.raw>
+                    <f:format.raw>{main}</f:format.raw>
+                    <!--TYPO3SEARCH_end-->
+                </div>
+            </div>
+        </div>
+        <f:if condition="{bottom}">
+            <section class="gk-context" aria-label="{f:translate(key: 'context.label', extensionName: 'gsb_kern')}">
+                <div class="kern-container">
+                    <!--TYPO3SEARCH_begin-->
+                    <f:format.raw>{bottom}</f:format.raw>
+                    <!--TYPO3SEARCH_end-->
+                </div>
+            </section>
+        </f:if>
+    </main>
+</f:section>
+</html>

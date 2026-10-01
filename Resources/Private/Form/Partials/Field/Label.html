@@ -1,0 +1,9 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>KERN marks optional fields (not required ones). tag: label (default) or legend.</f:comment>
+<f:variable name="text">{formvh:translateElementProperty(element: element, property: 'label')}</f:variable>
+<f:variable name="optional"><f:if condition="!{element.required}"> <span class="kern-label__optional">– {f:translate(key: 'form.optional', extensionName: 'gsb_kern')}</span></f:if></f:variable>
+<f:if condition="{tag} == 'legend'">
+    <f:then><legend class="kern-label">{text}{optional -> f:format.raw()}</legend></f:then>
+    <f:else><label class="kern-label" for="{element.uniqueIdentifier}">{text}{optional -> f:format.raw()}</label></f:else>
+</f:if>
+</html>

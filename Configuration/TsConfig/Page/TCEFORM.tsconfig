@@ -1,0 +1,7 @@
+TCEFORM.tt_content {
+  # GSB disables frame_class; we use it for the KERN box variants
+  frame_class {
+    disabled = 0
+    removeItems = ruler-before,ruler-after,indent,indent-left,indent-right
+  }
+}

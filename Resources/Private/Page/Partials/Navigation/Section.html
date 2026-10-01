@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>Pages below the current first-level section, active branch expanded. A details element so it can collapse on small screens (gsb-kern.js) and stays usable without JS.</f:comment>
+<f:variable name="section" value="{breadcrumbMenu.1}" />
+<nav class="gk-sectionnav" aria-label="{f:translate(key: 'nav.section', extensionName: 'gsb_kern')}">
+    <details class="gk-sectionnav__details" open>
+        <summary class="gk-sectionnav__summary">{f:translate(key: 'nav.section', extensionName: 'gsb_kern')}</summary>
+        <f:if condition="{section}">
+            <a class="gk-sectionnav__title{f:if(condition: section.current, then: ' is-current')}" href="{section.link}"{f:if(condition: section.current, then: ' aria-current="page"')}>{section.title}</a>
+        </f:if>
+        <f:render section="Items" arguments="{items: menuSub}" />
+    </details>
+</nav>
+
+<f:section name="Items">
+    <ul class="gk-sectionnav__list">
+        <f:for each="{items}" as="item">
+            <li class="gk-sectionnav__item">
+                <a class="gk-sectionnav__link{f:if(condition: item.active, then: ' is-active')}{f:if(condition: item.current, then: ' is-current')}" href="{item.link}"{f:if(condition: item.current, then: ' aria-current="page"')}>{item.title}</a>
+                <f:if condition="{item.active} && {item.children}">
+                    <f:render section="Items" arguments="{items: item.children}" />
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
+</f:section>
+</html>

@@ -1,0 +1,24 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>First level plus search; deeper levels are in the section navigation. Collapsed behind the menu button on small screens (JS).</f:comment>
+<f:if condition="{menuMain}">
+    <nav id="gk-mainnav" class="gk-mainnav" aria-label="{f:translate(key: 'nav.main', extensionName: 'gsb_kern')}" tabindex="-1">
+        <div class="kern-container">
+            <ul class="gk-mainnav__list">
+                <f:for each="{menuMain}" as="item">
+                    <li class="gk-mainnav__item">
+                        <a class="gk-mainnav__link{f:if(condition: item.active, then: ' is-active')}" href="{item.link}"{f:if(condition: item.target, then: ' target="{item.target}"')}{f:if(condition: item.current, then: ' aria-current="page"')}>{item.title}</a>
+                    </li>
+                </f:for>
+                <f:if condition="{site.configuration.settings.search.search-page}">
+                    <li class="gk-mainnav__item gk-mainnav__item--search">
+                        <a class="gk-mainnav__link" href="{f:uri.page(pageUid: site.configuration.settings.search.search-page)}">
+                            <span class="kern-icon kern-icon--search" aria-hidden="true"></span>
+                            {f:translate(key: 'nav.search', extensionName: 'gsb_kern')}
+                        </a>
+                    </li>
+                </f:if>
+            </ul>
+        </div>
+    </nav>
+</f:if>
+</html>

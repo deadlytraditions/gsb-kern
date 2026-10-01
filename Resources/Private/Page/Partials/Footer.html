@@ -1,0 +1,33 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<footer class="gk-footer">
+    <div class="kern-container">
+        <div class="gk-footer__menus">
+            <f:if condition="{menuMeta}">
+                <nav aria-label="{f:translate(key: 'nav.footer', extensionName: 'gsb_kern')}">
+                    <f:render section="Menu" arguments="{items: menuMeta}" />
+                </nav>
+            </f:if>
+            <f:if condition="{menuLegal}">
+                <nav aria-label="{f:translate(key: 'nav.legal', extensionName: 'gsb_kern')}">
+                    <f:render section="Menu" arguments="{items: menuLegal}" />
+                </nav>
+            </f:if>
+        </div>
+        <div class="gk-footer__bottom">
+            <p class="gk-footer__publisher">© {copyrightYear} {f:translate(key: 'footer.publisher', extensionName: 'gsb_kern', default: site.configuration.websiteTitle)}</p>
+            <a class="gk-footer__link gk-footer__top" href="#top">
+                <span class="kern-icon kern-icon--arrow-up" aria-hidden="true"></span>
+                {f:translate(key: 'footer.toTop', extensionName: 'gsb_kern')}
+            </a>
+        </div>
+    </div>
+</footer>
+
+<f:section name="Menu">
+    <ul class="gk-footer__list">
+        <f:for each="{items}" as="item">
+            <li><a class="gk-footer__link" href="{item.link}"{f:if(condition: item.current, then: ' aria-current="page"')}>{item.title}</a></li>
+        </f:for>
+    </ul>
+</f:section>
+</html>

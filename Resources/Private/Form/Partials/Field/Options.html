@@ -1,0 +1,28 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>Radio buttons and multiple checkboxes as a KERN fieldset. Arguments: element, type (radio, checkbox).</f:comment>
+<formvh:renderRenderable renderable="{element}">
+    <f:form.validationResults for="{element.rootForm.identifier}.{element.identifier}">
+        <f:variable name="describedBy"><f:if condition="{element.properties.elementDescription}">{element.uniqueIdentifier}-hint </f:if><f:if condition="{validationResults.errors}">{element.uniqueIdentifier}-error</f:if></f:variable>
+        <fieldset class="kern-fieldset{f:if(condition: validationResults.errors, then: ' kern-fieldset--error')}" id="{element.uniqueIdentifier}"{f:if(condition: describedBy, then: ' aria-describedby="{describedBy}"')}{f:if(condition: validationResults.errors, then: ' aria-invalid="true"')}>
+            <f:render partial="Field/Label" arguments="{element: element, tag: 'legend'}" />
+            <f:render partial="Field/Hint" arguments="{element: element}" />
+            <div class="kern-fieldset__body">
+                <f:for each="{element.properties.options}" as="label" key="value" iteration="i">
+                    <div class="kern-form-check">
+                        <f:if condition="{type} == 'radio'">
+                            <f:then>
+                                <f:form.radio property="{element.identifier}" value="{value}" id="{element.uniqueIdentifier}-{i.index}" class="kern-form-check__radio" errorClass="kern-form-check__radio--error" additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}" />
+                            </f:then>
+                            <f:else>
+                                <f:form.checkbox property="{element.identifier}" multiple="1" value="{value}" id="{element.uniqueIdentifier}-{i.index}" class="kern-form-check__checkbox" errorClass="kern-form-check__checkbox--error" additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}" />
+                            </f:else>
+                        </f:if>
+                        <label class="kern-label" for="{element.uniqueIdentifier}-{i.index}">{formvh:translateElementProperty(element: element, property: '{0: \'options\', 1: value}')}</label>
+                    </div>
+                </f:for>
+            </div>
+            <f:render partial="Field/Errors" arguments="{element: element, validationResults: validationResults}" />
+        </fieldset>
+    </f:form.validationResults>
+</formvh:renderRenderable>
+</html>

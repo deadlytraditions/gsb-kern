@@ -1,0 +1,25 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>Replaces GSB's form template (Bootstrap classes); keeps GSB's scripts for error autofocus and the referrer field.</f:comment>
+<formvh:renderRenderable renderable="{form}">
+    <formvh:form
+        action="{form.renderingOptions.controllerAction}"
+        addQueryString="{form.renderingOptions.addQueryString}"
+        additionalAttributes="{formvh:translateElementProperty(element: form, property: 'fluidAdditionalAttributes')}"
+        additionalParams="{form.renderingOptions.additionalParams}"
+        argumentsToBeExcludedFromQueryString="{form.renderingOptions.argumentsToBeExcludedFromQueryString}"
+        class="gk-form"
+        enctype="{form.renderingOptions.httpEnctype}"
+        id="{form.identifier}"
+        method="{form.renderingOptions.httpMethod}"
+        novalidate="novalidate"
+        object="{form}"
+        section="{form.identifier}"
+    >
+        <f:render partial="{form.currentPage.templateName}" arguments="{page: form.currentPage}" />
+        <f:render partial="Form/Navigation" arguments="{form: form}" />
+    </formvh:form>
+</formvh:renderRenderable>
+
+<f:asset.script identifier="gsb-core-form-validation-autofocus" src="EXT:gsb_core/Resources/Public/JavaScript/validation/formValidationAutofocus.js" />
+<f:asset.script identifier="gsb-core-initialize-with-referrer" src="EXT:gsb_core/Resources/Public/JavaScript/formInitializeWithReferrer.js" />
+</html>

@@ -1,0 +1,13 @@
+categories:
+  GsbKern:
+    label: 'GSB KERN'
+  GsbKern.navigation:
+    label: 'Navigation'
+    parent: GsbKern
+
+settings:
+  gsbKern.navigation.legal-page:
+    label: 'Legal navigation folder (Impressum, Datenschutz), rendered as the second footer menu'
+    category: GsbKern.navigation
+    type: page
+    default: 0

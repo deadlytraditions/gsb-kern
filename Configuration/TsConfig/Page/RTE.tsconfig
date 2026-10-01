@@ -1,0 +1,2 @@
+# Own CKEditor preset (KERN-compatible styles); GSB's RTE.default.proc settings stay in effect
+RTE.default.preset = gsb_kern

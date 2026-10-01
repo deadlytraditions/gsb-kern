@@ -1,0 +1,12 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    Portal name (and optional subtitle) linking to the home page. Labels brand.title / brand.subtitle come from the tenant
+    (locallangXMLOverride on EXT:gsb_kern/Resources/Private/Language/locallang.xlf); without them the site title is used.
+    Override this partial for a logo.
+</f:comment>
+<f:variable name="subtitle">{f:translate(key: 'brand.subtitle', extensionName: 'gsb_kern')}</f:variable>
+<a class="gk-brand" href="{f:uri.page(pageUid: site.rootPageId)}">
+    <span class="gk-brand__title">{f:translate(key: 'brand.title', extensionName: 'gsb_kern', default: site.configuration.websiteTitle)}</span>
+    <f:if condition="{subtitle}"><span class="gk-brand__subtitle">{subtitle}</span></f:if>
+</a>
+</html>

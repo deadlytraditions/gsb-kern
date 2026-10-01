@@ -1,0 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+    <nav class="gk-sitemap" aria-labelledby="c{data.uid}-sitemap">
+        <span id="c{data.uid}-sitemap" class="kern-sr-only">{f:if(condition: data.header, then: data.header, else: 'Sitemap')}</span>
+        <f:render section="Menu" arguments="{menu: menu}" />
+    </nav>
+</f:section>
+
+<f:section name="Menu">
+    <f:if condition="{menu}">
+        <ul class="kern-list gk-sitemap__list">
+            <f:for each="{menu}" as="page">
+                <li>
+                    <a class="kern-link" href="{page.link}"{f:if(condition: page.target, then: ' target="{page.target}"')}>{page.title}</a>
+                    <f:render section="Menu" arguments="{menu: page.children}" />
+                </li>
+            </f:for>
+        </ul>
+    </f:if>
+</f:section>
+</html>

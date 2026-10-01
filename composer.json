@@ -1,0 +1,38 @@
+{
+  "name": "deadlytraditions/gsb-kern",
+  "description": "KERN UX frontend layer for GSB 11 (TYPO3 13): Fluid templates in KERN markup, page chrome and theme tokens on top of itzbund/gsb-core",
+  "license": "GPL-3.0-or-later",
+  "type": "typo3-cms-extension",
+  "keywords": [
+    "TYPO3",
+    "GSB",
+    "KERN",
+    "kern-ux",
+    "accessibility"
+  ],
+  "authors": [
+    {
+      "name": "deadlytraditions",
+      "homepage": "https://github.com/deadlytraditions",
+      "role": "Developer"
+    }
+  ],
+  "homepage": "https://github.com/deadlytraditions/gsb-kern",
+  "support": {
+    "issues": "https://github.com/deadlytraditions/gsb-kern/issues",
+    "source": "https://github.com/deadlytraditions/gsb-kern"
+  },
+  "require": {
+    "php": "^8.3",
+    "itzbund/gsb-core": "^5.5",
+    "typo3/cms-core": "^13.4"
+  },
+  "suggest": {
+    "typo3/cms-form": "KERN templates for EXT:form"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "gsb_kern"
+    }
+  }
+}

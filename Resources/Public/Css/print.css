@@ -1,0 +1,52 @@
+/* Print view: content only, link targets spelled out. */
+
+.gk-skiplinks,
+.kern-kopfzeile,
+.gk-meta,
+.gk-nav-toggle,
+.gk-mainnav,
+.gk-breadcrumb,
+.gk-sectionnav,
+.gk-footer__menus,
+.gk-footer__bottom a {
+    display: none !important;
+}
+
+body {
+    font-size: 11pt;
+}
+
+.gk-header {
+    border: 0;
+}
+
+.gk-header__bar,
+.gk-main {
+    padding-top: 0;
+}
+
+.kern-container {
+    max-width: none;
+    padding: 0;
+}
+
+.kern-row > [class*="kern-col"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.gk-richtext a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    word-break: break-all;
+}
+
+.kern-accordion:not([open]) > .kern-accordion__body {
+    display: block;
+}
+
+.gk-figure,
+.kern-alert,
+table {
+    break-inside: avoid;
+}

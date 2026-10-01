@@ -1,0 +1,51 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    Frame of every content element. frame_class box-* renders a KERN alert, surface a tinted block, none no wrapper.
+    (Sections rendered from a layout resolve in the template, hence no helper sections here.)
+</f:comment>
+<f:variable name="variant">{f:cObject(typoscriptObjectPath: 'lib.gsbKern.boxVariant', data: data)}</f:variable>
+<f:variable name="spaceClasses">{f:if(condition: data.space_before_class, then: ' gk-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' gk-space-after-{data.space_after_class}')}</f:variable>
+<f:if condition="{variant}">
+    <f:then>
+        <div id="c{data.uid}" class="gk-ce gk-ce--{data.CType} gk-box kern-alert kern-alert--{variant}{spaceClasses}">
+            <f:if condition="{data._LOCALIZED_UID}"><a id="c{data._LOCALIZED_UID}"></a></f:if>
+            <div class="kern-alert__header">
+                <span class="kern-icon kern-icon--{variant}" aria-hidden="true"></span>
+                <f:if condition="{data.header} && {data.header_layout} != 100">
+                    <f:then>
+                        <f:render partial="Header/All" arguments="{data: data, settings: settings, titleClass: 'kern-title'}" />
+                    </f:then>
+                    <f:else>
+                        <span class="kern-title">{f:translate(key: 'box.{data.frame_class}', extensionName: 'gsb_kern')}</span>
+                    </f:else>
+                </f:if>
+            </div>
+            <div class="kern-alert__body">
+                <f:render section="Main" optional="true" />
+            </div>
+        </div>
+    </f:then>
+    <f:else if="{data.frame_class} == 'none'">
+        <a id="c{data.uid}"></a>
+        <f:render section="Before" optional="true" />
+        <f:render section="Header" optional="true">
+            <f:render partial="Header/All" arguments="{_all}" />
+        </f:render>
+        <f:render section="Main" optional="true" />
+        <f:render section="Footer" optional="true" />
+        <f:render section="After" optional="true" />
+    </f:else>
+    <f:else>
+        <div id="c{data.uid}" class="gk-ce gk-ce--{data.CType}{f:if(condition: '{data.frame_class} == surface', then: ' gk-surface')}{spaceClasses}">
+            <f:if condition="{data._LOCALIZED_UID}"><a id="c{data._LOCALIZED_UID}"></a></f:if>
+            <f:render section="Before" optional="true" />
+            <f:render section="Header" optional="true">
+                <f:render partial="Header/All" arguments="{_all}" />
+            </f:render>
+            <f:render section="Main" optional="true" />
+            <f:render section="Footer" optional="true" />
+            <f:render section="After" optional="true" />
+        </div>
+    </f:else>
+</f:if>
+</html>
