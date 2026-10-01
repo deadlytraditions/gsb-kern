@@ -230,15 +230,10 @@ nav:focus {
         flex-direction: column;
     }
 
+    /* same padding in every state, so hovering doesn't move the text */
     .gk-mainnav__link {
-        padding: var(--kern-metric-space-default, 16px) 0;
+        padding: var(--kern-metric-space-default, 16px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    }
-
-    .gk-mainnav__link:hover,
-    .gk-mainnav__link.is-active,
-    .gk-mainnav__link[aria-current] {
-        padding-left: var(--kern-metric-space-default, 16px);
     }
 
     /* JS enhanced: collapsed until the menu button opens it; without JS it stays expanded */
