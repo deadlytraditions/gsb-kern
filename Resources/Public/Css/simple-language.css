@@ -1,4 +1,11 @@
-/* Easy Language section (site setting accessability.simpleLanguagePage): larger type, as in GSB's own frontend */
-html {
-    font-size: 120%;
+/* Easy Language section (site setting accessability.simpleLanguagePage): larger type and more line spacing for the
+   content. Header, navigation and footer keep their size, so the page chrome looks the same as everywhere else. */
+/* inside the container, which keeps its width and stays aligned with the header */
+.gk-page-title,
+.gk-main .kern-container > .kern-row {
+    zoom: 1.2;
+}
+
+.gk-main .gk-richtext :is(p, li) {
+    line-height: 1.7;
 }
