@@ -1061,3 +1061,68 @@ nav:focus {
         display: none;
     }
 }
+
+/* Print (and "save as PDF"): the content with the brand, without navigation and decoration */
+@media print {
+    .kern-kopfzeile,
+    .gk-skiplinks,
+    .gk-meta,
+    .gk-nav-toggle,
+    .gk-mainnav,
+    .gk-breadcrumb-bar,
+    .gk-banner,
+    .gk-sectionnav,
+    .gk-footer__menus,
+    .gk-footer__top,
+    .gk-pagination,
+    .gk-search form {
+        display: none !important;
+    }
+
+    body {
+        background: #fff;
+        color: #000;
+    }
+
+    .gk-header,
+    .gk-footer {
+        background: none;
+        color: #000;
+        box-shadow: none;
+    }
+
+    .gk-footer {
+        margin-top: 1.5rem;
+        border-top: 1px solid #000;
+    }
+
+    .kern-container {
+        max-width: none;
+        padding-inline: 0;
+    }
+
+    .gk-context {
+        background: none;
+    }
+
+    /* the address of links leaving the page; internal links are no use on paper */
+    .gk-richtext a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.85em;
+        font-weight: 400;
+        overflow-wrap: anywhere;
+    }
+
+    :is(h1, h2, h3, h4, h5, h6) {
+        break-after: avoid;
+    }
+
+    :is(figure, img, .kern-table__row, .gk-tile, .kern-card, .gk-box) {
+        break-inside: avoid;
+    }
+
+    .gk-table,
+    .kern-table-responsive {
+        overflow: visible;
+    }
+}

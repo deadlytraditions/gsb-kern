@@ -19,6 +19,8 @@ Independent project, not part of GSB/ITZBund or the KERN team.
   [search component](https://www.kern-ux.de/komponenten/search) with result list and pagination
   (`Resources/Private/Solr`). Facets, sorting and suggestions are switched off (`40.Solr.typoscript`); results only
   appear after a search.
+- **Print styles** (browser print / "save as PDF"): content and brand without navigation, banner and footer menus;
+  external links show their address, accordions are opened for printing.
 - **CKEditor preset** `gsb_kern` (h2–h4, styles intro text / warning / link list / button), RTE tables → KERN table.
 - **KERN assets** bundled locally (no CDN): `Resources/Public/Vendor/kern`, updated by `Build/kern-update.sh`
   (pinned version + SHA-256).

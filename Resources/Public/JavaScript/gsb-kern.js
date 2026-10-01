@@ -33,4 +33,19 @@
         sync();
         largeScreen.addEventListener('change', sync);
     });
+
+    // Print: closed accordions and the collapsed sections would be missing on paper
+    let closedForScreen = [];
+    window.addEventListener('beforeprint', () => {
+        closedForScreen = [...document.querySelectorAll('.gk-main details:not([open])')];
+        closedForScreen.forEach((details) => {
+            details.open = true;
+        });
+    });
+    window.addEventListener('afterprint', () => {
+        closedForScreen.forEach((details) => {
+            details.open = false;
+        });
+        closedForScreen = [];
+    });
 })();
