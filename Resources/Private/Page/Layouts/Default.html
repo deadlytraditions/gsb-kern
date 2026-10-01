@@ -1,6 +1,13 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:comment>KERN page shell. Replaces GSB's Layouts/Page/Default.html (Colors: Bootstrap variables, Consent: gsb-consent is not installed).</f:comment>
 
+<f:comment>
+    GSB background colours (site settings colors.background, content field grid_bgcolor) as CSS variables. A style
+    attribute on a wrapper without a box instead of a style element: a Content-Security-Policy blocks inline style
+    elements on cached pages (TYPO3 drops the nonce there).
+</f:comment>
+<f:variable name="backgroundColors"><f:spaceless><f:for each="{site.configuration.settings.colors.background}" as="item" key="key">--gk-bg-{key -> f:format.case(mode: 'lower') -> f:replace(search: 'gsb-background-', replace: '')}: {item.color};</f:for></f:spaceless></f:variable>
+<div class="gk-page"{f:if(condition: backgroundColors, then: ' style="{backgroundColors}"')}>
 <ul class="gk-skiplinks">
     <li><a class="kern-link" href="#main">{f:translate(key: 'skip.content', extensionName: 'gsb_kern')}</a></li>
     <li><a class="kern-link" href="#gk-mainnav">{f:translate(key: 'skip.navigation', extensionName: 'gsb_kern')}</a></li>
@@ -8,14 +15,8 @@
 
 <f:render partial="Header" arguments="{_all}" />
 
-<f:comment>GSB background colours (site settings colors.background, content field grid_bgcolor) as CSS variables</f:comment>
-<f:if condition="{site.configuration.settings.colors.background}">
-    <f:asset.css identifier="gk-background-colors" useNonce="true" priority="true">
-        :root <f:format.raw>{</f:format.raw><f:for each="{site.configuration.settings.colors.background}" as="item" key="key">--gk-bg-{key -> f:format.case(mode: 'lower') -> f:replace(search: 'gsb-background-', replace: '')}: {item.color};</f:for><f:format.raw>}</f:format.raw>
-    </f:asset.css>
-</f:if>
-
 <f:render section="Main" />
 
 <f:render partial="Footer" arguments="{_all}" />
+</div>
 </html>
