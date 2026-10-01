@@ -1,5 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:comment>Service links top right, portal name right-aligned, main navigation as a bar below.</f:comment>
+<f:comment>Service links top right, search field (large screens, not on the search page itself) left of the right-aligned portal name, main navigation as a bar below.</f:comment>
 <header class="gk-header">
     <f:render partial="Kopfzeile" />
     <div class="kern-container gk-header__bar">
@@ -9,9 +9,24 @@
                 <span class="kern-icon kern-icon--dehaze" aria-hidden="true"></span>
                 <span class="kern-label">{f:translate(key: 'nav.toggle', extensionName: 'gsb_kern')}</span>
             </button>
+            <f:variable name="searchPage">{site.configuration.settings.search.search-page}</f:variable>
+            <f:if condition="{searchPage} && {searchPage} != {data.uid}">
+                <search class="gk-header__search">
+                    <form class="kern-form-input" action="{f:uri.page(pageUid: searchPage)}" method="get">
+                        <label class="kern-label kern-sr-only" for="gk-header-search">{f:translate(key: 'search.label', extensionName: 'gsb_kern')}</label>
+                        <div class="kern-input-group">
+                            <input class="kern-form-input__input" id="gk-header-search" type="search" name="tx_solr[q]" maxlength="256" autocomplete="off" />
+                            <button class="kern-btn kern-btn--primary" type="submit">
+                                <span class="kern-icon kern-icon--search" aria-hidden="true"></span>
+                                <span class="kern-label kern-sr-only">{f:translate(key: 'search.submit', extensionName: 'gsb_kern')}</span>
+                            </button>
+                        </div>
+                    </form>
+                </search>
+            </f:if>
             <f:render partial="Brand" arguments="{site: site}" />
         </div>
     </div>
-    <f:render partial="Navigation/Main" arguments="{menuMain: menuMain, site: site}" />
+    <f:render partial="Navigation/Main" arguments="{menuMain: menuMain, site: site, data: data}" />
 </header>
 </html>

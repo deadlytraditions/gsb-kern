@@ -11,7 +11,8 @@
                 </f:for>
                 <f:if condition="{site.configuration.settings.search.search-page}">
                     <li class="gk-mainnav__item gk-mainnav__item--search">
-                        <a class="gk-mainnav__link" href="{f:uri.page(pageUid: site.configuration.settings.search.search-page)}">
+                        <f:variable name="onSearchPage">{f:if(condition: '{site.configuration.settings.search.search-page} == {data.uid}', then: 1, else: 0)}</f:variable>
+                        <a class="gk-mainnav__link{f:if(condition: onSearchPage, then: ' is-active')}" href="{f:uri.page(pageUid: site.configuration.settings.search.search-page)}"{f:if(condition: onSearchPage, then: ' aria-current="page"')}>
                             <span class="kern-icon kern-icon--search" aria-hidden="true"></span>
                             {f:translate(key: 'nav.search', extensionName: 'gsb_kern')}
                         </a>
