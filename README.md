@@ -9,8 +9,8 @@ Independent project, not part of GSB/ITZBund or the KERN team.
 ## What it provides
 
 - **Page chrome** (KERN has no navigation/header components yet): Kopfzeile, skip links, header with portal name,
-  service/language links, search field (large screens), main navigation (collapsible on small screens), breadcrumb,
-  section navigation, footer.
+  service/language links, main navigation (collapsible on small screens) with the search entry, breadcrumb, section
+  navigation, footer.
 - **Page templates** per backend layout: `Home`, `TwoColumns` (both with sidebar colPos 3), GSB's `Default` and
   `OneColArticle`. colPos follow GSB (0 Top, 1 Main, 2 Bottom as a full-width band).
 - **Content elements** (fluid_styled_content + GSB) and **containers** (accordion, tabs → accordion, grid, slider →

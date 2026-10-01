@@ -141,27 +141,6 @@ nav:focus {
     margin-top: var(--kern-metric-space-x-large, 32px);
 }
 
-/* Search field in the header: large screens only, small ones reach the search through the menu */
-.gk-header__search {
-    display: none;
-    flex: 0 1 22rem;
-}
-
-.gk-header__search .kern-input-group {
-    flex-wrap: nowrap;
-}
-
-.gk-header__search .kern-form-input__input {
-    flex: 1 1 auto;
-    min-width: 0;
-}
-
-@media (min-width: 992px) {
-    .gk-header__search {
-        display: block;
-    }
-}
-
 .gk-brand {
     display: flex;
     flex-direction: column;
