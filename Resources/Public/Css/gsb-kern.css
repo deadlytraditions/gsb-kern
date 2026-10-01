@@ -331,6 +331,15 @@ nav:focus {
     margin-top: var(--kern-metric-space-x-large, 32px);
 }
 
+/* Long words (German compounds) must not widen their column; the narrow sidebar hyphenates them */
+.gk-main :is(h2, h3, h4, h5, h6) {
+    overflow-wrap: break-word;
+}
+
+.gk-sidebar :is(h2, h3, h4, h5, h6) {
+    hyphens: auto;
+}
+
 .gk-sidebar :is(.kern-heading-x-large, .kern-heading-large) {
     font-size: var(--kern-typography-font-size-large-adaptive, 26px);
     font-weight: 400;
