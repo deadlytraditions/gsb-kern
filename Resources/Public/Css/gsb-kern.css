@@ -539,6 +539,13 @@ nav:focus {
     width: 100%;
 }
 
+.gk-video__player {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+}
+
 .gk-figure__caption {
     display: flex;
     flex-wrap: wrap;

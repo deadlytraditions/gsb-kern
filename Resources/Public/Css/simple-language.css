@@ -1,0 +1,4 @@
+/* Easy Language section (site setting accessability.simpleLanguagePage): larger type, as in GSB's own frontend */
+html {
+    font-size: 120%;
+}

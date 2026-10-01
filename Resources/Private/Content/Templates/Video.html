@@ -1,0 +1,53 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>GSB video element without GSB's player script: local files use the browser's player (subtitles as track, described versions as links); YouTube/Vimeo are linked instead of embedded, so nothing is loaded from them.</f:comment>
+<f:layout name="Default" />
+<f:section name="Main">
+    <f:variable name="file">{video.0}</f:variable>
+    <f:variable name="poster">{files.0}</f:variable>
+    <f:variable name="mimeType">{file.originalFile.properties.mime_type}</f:variable>
+    <f:if condition="{data.imageorient} == 8 && {data.bodytext}">
+        <div class="gk-richtext"><f:format.html>{data.bodytext}</f:format.html></div>
+    </f:if>
+    <f:if condition="{file}">
+        <f:if condition="{mimeType} == 'video/youtube' || {mimeType} == 'video/vimeo'">
+            <f:then>
+                <f:variable name="title">{f:if(condition: file.properties.title, then: file.properties.title, else: file.originalFile.properties.title)}</f:variable>
+                <figure class="gk-figure gk-video">
+                    <f:if condition="{poster}">
+                        <f:image image="{poster}" maxWidth="973" alt="" loading="lazy" />
+                    </f:if>
+                    <figcaption class="gk-figure__caption kern-body">
+                        <a class="kern-link" href="{file.publicUrl}" target="_blank" rel="noopener noreferrer">
+                            <span class="kern-icon kern-icon--open-in-new" aria-hidden="true"></span>
+                            {f:translate(key: 'video.external.{f:if(condition: \'{mimeType} == "video/youtube"\', then: \'youtube\', else: \'vimeo\')}', extensionName: 'gsb_kern', arguments: {0: title})}
+                            <span class="kern-sr-only">({f:translate(key: 'link.external', extensionName: 'gsb_kern')})</span>
+                        </a>
+                    </figcaption>
+                </figure>
+            </f:then>
+            <f:else>
+                <figure class="gk-figure gk-video">
+                    <video class="gk-video__player" controls preload="none" src="{file.publicUrl}"{f:if(condition: poster, then: ' poster="{f:uri.image(image: poster, maxWidth: 973)}"')}>
+                        <f:if condition="{video_caption.0}">
+                            <track kind="subtitles" srclang="{f:translate(key: 'video.subtitles.language', extensionName: 'gsb_kern')}" label="{f:translate(key: 'video.subtitles', extensionName: 'gsb_kern')}" src="{video_caption.0.publicUrl}" />
+                        </f:if>
+                    </video>
+                    <f:if condition="{video_audiodescription.0} || {video_description.0}">
+                        <figcaption class="gk-figure__caption kern-body kern-body--small">
+                            <f:if condition="{video_audiodescription.0}">
+                                <a class="kern-link" href="{video_audiodescription.0.publicUrl}">{f:translate(key: 'video.audiodescription', extensionName: 'gsb_kern')}</a>
+                            </f:if>
+                            <f:if condition="{video_description.0}">
+                                <a class="kern-link" href="{video_description.0.publicUrl}">{f:translate(key: 'video.description', extensionName: 'gsb_kern')}</a>
+                            </f:if>
+                        </figcaption>
+                    </f:if>
+                </figure>
+            </f:else>
+        </f:if>
+    </f:if>
+    <f:if condition="{data.imageorient} != 8 && {data.bodytext}">
+        <div class="gk-richtext"><f:format.html>{data.bodytext}</f:format.html></div>
+    </f:if>
+</f:section>
+</html>

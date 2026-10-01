@@ -1,6 +1,6 @@
 page {
-  # gsb-public-frontend assets are replaced by KERN (kept installed, only not delivered). Tenants add their theme
-  # (token values, fonts) as further includeCSS entries after these.
+  # KERN replaces GSB's frontend assets; itzbund/gsb-public-frontend isn't needed (if it is installed anyway, its
+  # CSS/JS are dropped here). Tenants add their theme (token values, fonts) as further includeCSS entries after these.
   includeCSS {
     screen >
     print >
@@ -48,3 +48,9 @@ page {
 # KERN follows prefers-color-scheme; pinned to light because the brand tokens (gsb-kern.css) only cover the light
 # theme and RTE content may carry inline colours that aren't checked for contrast on dark backgrounds.
 config.htmlTag.attributes.data-kern-theme = light
+
+# Easy Language section: larger type. gsb-core's body class "simple-language-page" can't be used for this, it is set on
+# every page; the condition is the one GSB's own frontend uses.
+[{$accessability.simpleLanguagePage} > 0 && {$accessability.simpleLanguagePage} in tree.rootLineIds]
+  page.includeCSS.gsbKernSimpleLanguage = EXT:gsb_kern/Resources/Public/Css/simple-language.css
+[GLOBAL]

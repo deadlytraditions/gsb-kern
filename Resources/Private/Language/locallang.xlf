@@ -23,6 +23,12 @@
             <trans-unit id="box.box-danger"><source>Danger</source></trans-unit>
             <trans-unit id="media.copyright"><source>Copyright</source></trans-unit>
             <trans-unit id="uploads.download"><source>Download</source></trans-unit>
+            <trans-unit id="video.external.youtube"><source>Watch "%s" on YouTube</source></trans-unit>
+            <trans-unit id="video.external.vimeo"><source>Watch "%s" on Vimeo</source></trans-unit>
+            <trans-unit id="video.subtitles"><source>Subtitles</source></trans-unit>
+            <trans-unit id="video.subtitles.language"><source>en</source></trans-unit>
+            <trans-unit id="video.audiodescription"><source>Version with audio description</source></trans-unit>
+            <trans-unit id="video.description"><source>Version with video description</source></trans-unit>
             <trans-unit id="link.external"><source>opens in a new window</source></trans-unit>
             <trans-unit id="form.optional"><source>optional</source></trans-unit>
             <trans-unit id="form.error"><source>Error</source></trans-unit>
