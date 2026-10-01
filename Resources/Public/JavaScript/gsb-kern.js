@@ -22,6 +22,14 @@
                 toggle.focus();
             }
         });
+        // The skip link to the navigation must not end in the collapsed menu
+        document.querySelectorAll('a[href$="#gk-mainnav"]').forEach((link) => {
+            link.addEventListener('click', () => {
+                if (toggle.offsetParent !== null) {
+                    setOpen(true);
+                }
+            });
+        });
     }
 
     // Section navigation: open on large screens, collapsed (but reachable) on small ones
