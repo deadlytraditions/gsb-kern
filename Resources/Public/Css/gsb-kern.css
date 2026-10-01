@@ -195,14 +195,11 @@ nav:focus {
 }
 
 @media (min-width: 992px) {
-    /* one row; long titles wrap inside their item */
-    .gk-mainnav__list {
-        flex-wrap: nowrap;
-    }
-
+    /* one row as long as every item fits at the width of its longest word (long titles wrap inside their item);
+       otherwise the list wraps to a second row instead of squeezing items below their text */
     .gk-mainnav__item {
-        flex: 0 1 auto;
-        min-width: 0;
+        flex: 1 1 min-content;
+        max-width: max-content;
         padding: var(--kern-metric-space-default, 16px) 0 0;
     }
 
