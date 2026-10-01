@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:section name="Document">
+    <f:comment>GSB indexes the page title as headline_stringS; "title" is the browser title (with the site name)</f:comment>
+    <f:variable name="title">{f:if(condition: document.fields.headline_stringS, then: document.fields.headline_stringS, else: document.title)}</f:variable>
+    <li class="gk-search__result">
+        <h3 class="kern-heading-small gk-search__result-title">
+            <a class="kern-link" href="{s:uri.result.addSearchWordList(url: document.url, searchWords: resultSet.usedQuery.query)}">{title}</a>
+        </h3>
+        <p class="kern-body gk-search__result-text">
+            <f:format.crop maxCharacters="{settings.result.crop.maxCharacters}" respectWordBoundaries="true" respectHtml="true">{s:document.highlightResult(resultSet: resultSet, document: document, fieldName: 'content')}</f:format.crop>
+        </p>
+        <f:if condition="{document.type} == 'tx_solr_file'">
+            <p class="kern-body kern-body--small gk-search__result-meta">{document.fileMimeType}</p>
+        </f:if>
+    </li>
+</f:section>
+</html>

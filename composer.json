@@ -28,6 +28,7 @@
     "typo3/cms-core": "^13.4"
   },
   "suggest": {
+    "itzbund/gsb-solr": "KERN templates for the Solr search page",
     "typo3/cms-form": "KERN templates for EXT:form"
   },
   "extra": {

@@ -1,0 +1,48 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+      xmlns:gsbsolr="http://typo3.org/ns/ITZBund/GsbSolr/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:comment>Search page: form, then what was searched for and how much was found (announced as status), results, pagination. No facets and sorting; GSB's templates for those are Bootstrap based.</f:comment>
+<f:layout name="Split" />
+<f:section name="content">
+    <f:render partial="Search/Form" section="Form" arguments="{search: search, additionalFilters: additionalFilters, pluginNamespace: pluginNamespace, resultSet: resultSet}" />
+
+    <f:if condition="{resultSet.hasSearched} && {resultSet.usedQuery.query}">
+        <gsbsolr:titleTagSearch>{f:translate(key: 'search.title', extensionName: 'gsb_kern', arguments: {0: resultSet.usedQuery.query})}</gsbsolr:titleTagSearch>
+        <div class="gk-search__summary" role="status">
+            <h2 class="kern-heading-medium">
+                <f:if condition="{resultSet.allResultCount} == 1">
+                    <f:then>{f:translate(key: 'search.found.one', extensionName: 'gsb_kern', arguments: {0: resultSet.usedQuery.query})}</f:then>
+                    <f:else>{f:translate(key: 'search.found', extensionName: 'gsb_kern', arguments: {0: resultSet.allResultCount, 1: resultSet.usedQuery.query})}</f:else>
+                </f:if>
+            </h2>
+            <f:if condition="{resultSet.isAutoCorrected}">
+                <p class="kern-body">{f:translate(key: 'search.corrected', extensionName: 'gsb_kern', arguments: {0: resultSet.initialQueryString, 1: resultSet.correctedQueryString})}</p>
+            </f:if>
+            <f:if condition="{resultSet.hasSpellCheckingSuggestions}">
+                <p class="kern-body">
+                    {f:translate(key: 'search.didYouMean', extensionName: 'gsb_kern')}
+                    <f:for each="{resultSet.spellCheckingSuggestions}" as="suggestion" iteration="iterator">
+                        <f:link.page class="kern-link" additionalParams="{tx_solr: {q: suggestion.suggestion}}">{suggestion.suggestion}</f:link.page>{f:if(condition: iterator.isLast, else: ', ')}
+                    </f:for>
+                </p>
+            </f:if>
+            <f:if condition="!{resultSet.allResultCount}">
+                <ul class="kern-list kern-list--bullet">
+                    <li>{f:translate(key: 'search.hint.spelling', extensionName: 'gsb_kern')}</li>
+                    <li>{f:translate(key: 'search.hint.general', extensionName: 'gsb_kern')}</li>
+                </ul>
+            </f:if>
+        </div>
+
+        <f:if condition="{resultSet.allResultCount}">
+            <ol class="gk-search__results" start="{pagination.startRecordNumber}">
+                <f:for each="{resultSet.searchResults}" as="document">
+                    <f:render partial="Result/Document" section="Document" arguments="{resultSet: resultSet, document: document}" />
+                </f:for>
+            </ol>
+            <f:render partial="Result/Pagination" section="Pagination" arguments="{resultSet: resultSet, pagination: pagination, currentPage: currentPage}" />
+        </f:if>
+    </f:if>
+</f:section>
+</html>

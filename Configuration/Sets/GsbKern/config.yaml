@@ -2,3 +2,5 @@ name: deadlytraditions/gsb-kern
 label: GSB KERN UX layer
 dependencies:
   - itzbund-gsb/default
+optionalDependencies:
+  - itzbund-gsb/solr

@@ -1,0 +1,49 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:comment>KERN has no pagination component yet: previous/next as text links, page numbers in between (hidden on small screens except the current one).</f:comment>
+<f:section name="Pagination">
+    <f:if condition="{pagination.lastPageNumber} > 1">
+        <nav class="gk-pagination" aria-label="{f:translate(key: 'pagination.label', extensionName: 'gsb_kern')}">
+            <ul class="gk-pagination__list">
+                <f:if condition="{pagination.previousPageNumber}">
+                    <li class="gk-pagination__item gk-pagination__item--step">
+                        <a class="kern-link" rel="prev" href="{s:uri.paginate.resultPage(page: pagination.previousPageNumber)}">
+                            <span class="kern-icon kern-icon--arrow-back" aria-hidden="true"></span>
+                            {f:translate(key: 'pagination.previous', extensionName: 'gsb_kern')}
+                        </a>
+                    </li>
+                </f:if>
+                <f:if condition="{pagination.hasLessPages}">
+                    <li class="gk-pagination__item gk-pagination__item--gap" aria-hidden="true">…</li>
+                </f:if>
+                <f:for each="{pagination.allPageNumbers}" as="page">
+                    <f:if condition="{page} == {currentPage}">
+                        <f:then>
+                            <li class="gk-pagination__item gk-pagination__item--current">
+                                <span aria-current="page"><span class="kern-sr-only">{f:translate(key: 'pagination.page', extensionName: 'gsb_kern')} </span>{page}</span>
+                            </li>
+                        </f:then>
+                        <f:else>
+                            <li class="gk-pagination__item gk-pagination__item--number">
+                                <a class="kern-link" href="{s:uri.paginate.resultPage(page: page)}"><span class="kern-sr-only">{f:translate(key: 'pagination.page', extensionName: 'gsb_kern')} </span>{page}</a>
+                            </li>
+                        </f:else>
+                    </f:if>
+                </f:for>
+                <f:if condition="{pagination.hasMorePages}">
+                    <li class="gk-pagination__item gk-pagination__item--gap" aria-hidden="true">…</li>
+                </f:if>
+                <f:if condition="{pagination.nextPageNumber}">
+                    <li class="gk-pagination__item gk-pagination__item--step">
+                        <a class="kern-link" rel="next" href="{s:uri.paginate.resultPage(page: pagination.nextPageNumber)}">
+                            {f:translate(key: 'pagination.next', extensionName: 'gsb_kern')}
+                            <span class="kern-icon kern-icon--arrow-forward" aria-hidden="true"></span>
+                        </a>
+                    </li>
+                </f:if>
+            </ul>
+        </nav>
+    </f:if>
+</f:section>
+</html>

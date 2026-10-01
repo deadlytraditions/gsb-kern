@@ -1,0 +1,21 @@
+# Search (EXT:solr with itzbund/gsb-solr, optional): KERN templates for the search form and the result list.
+# Facets, sorting and suggestions are switched off; GSB's templates and script for them belong to its Bootstrap frontend.
+plugin.tx_solr {
+  view {
+    templateRootPaths.200 = EXT:gsb_kern/Resources/Private/Solr/Templates/
+    partialRootPaths.200 = EXT:gsb_kern/Resources/Private/Solr/Partials/
+    layoutRootPaths.200 = EXT:gsb_kern/Resources/Private/Solr/Layouts/
+  }
+
+  suggest = 0
+
+  search {
+    # The search page starts with the form only
+    initializeWithEmptyQuery = 0
+    showResultsOfInitialEmptyQuery = 0
+    query.allowEmptyQuery = 0
+    faceting = 0
+    sorting = 0
+    results.resultsHighlighting.wrap = <mark>|</mark>
+  }
+}

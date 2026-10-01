@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:comment>KERN search component (kern-ux.de/komponenten/search): visible label, input group with primary button. The term stays in the field after searching.</f:comment>
+<f:section name="Form">
+    <search class="gk-search__form">
+        <s:searchForm id="gk-search-form" class="kern-form-input" additionalFilters="{additionalFilters}">
+            <f:for each="{existingParameters}" key="name" as="value">
+                <f:form.hidden name="{pluginNamespace}{name}" value="{value}" />
+            </f:for>
+            <f:if condition="{addPageAndLanguageId}">
+                <input type="hidden" name="L" value="{languageUid}" />
+                <input type="hidden" name="id" value="{pageUid}" />
+            </f:if>
+            <label class="kern-label" for="gk-search-term">{f:translate(key: 'search.label', extensionName: 'gsb_kern')}</label>
+            <div class="kern-input-group">
+                <input class="kern-form-input__input" id="gk-search-term" type="search" name="{pluginNamespace}[q]" value="{q}" maxlength="256" autocomplete="off" />
+                <button class="kern-btn kern-btn--primary" type="submit">
+                    <span class="kern-icon kern-icon--search" aria-hidden="true"></span>
+                    <span class="kern-label">{f:translate(key: 'search.submit', extensionName: 'gsb_kern')}</span>
+                </button>
+            </div>
+        </s:searchForm>
+    </search>
+</f:section>
+</html>
