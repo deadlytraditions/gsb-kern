@@ -4,8 +4,8 @@ TCEFORM.tt_content {
     disabled = 0
     removeItems = ruler-before,ruler-after,indent,indent-left,indent-right
   }
-}
 
-# GSB hides content types its own frontend has no template for. The layer renders menu_categorized_pages and
-# textmedia, so they stay selectable (otherwise existing elements show an invalid type in the backend).
-TCEFORM.tt_content.CType.removeItems = bullets, div, menu_abstract, menu_categorized_content, menu_pages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, table, html
+  # GSB hides content types its own frontend has no template for. The layer renders menu_categorized_pages and
+  # textmedia, so they stay selectable (otherwise existing elements show an invalid type in the backend).
+  CType.removeItems = bullets, div, menu_abstract, menu_categorized_content, menu_pages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, table, html
+}
