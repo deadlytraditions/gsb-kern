@@ -1,0 +1,49 @@
+name: QA
+
+on:
+  push:
+    branches: [main, develop]
+    tags: ['*']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    name: composer qa (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.3', '8.4']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: intl, mbstring, pdo_sqlite, gd, zip
+          coverage: none
+          tools: composer:v2
+
+      - name: Cache Composer downloads
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/composer/files
+          key: composer-${{ matrix.php }}-${{ hashFiles('composer.json') }}
+          restore-keys: composer-${{ matrix.php }}-
+
+      - name: Install
+        run: composer install --no-interaction --no-progress
+
+      - name: QA
+        run: composer qa
+
+  shellcheck:
+    name: shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build scripts
+        run: shellcheck Build/*.sh

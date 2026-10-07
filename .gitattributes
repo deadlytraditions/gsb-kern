@@ -1,0 +1,8 @@
+# Development files stay out of the archives Composer installs
+/.github/ export-ignore
+/.editorconfig export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/.php-cs-fixer.dist.php export-ignore
+/.typoscript-lint.yml export-ignore
+/phpstan.neon export-ignore

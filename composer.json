@@ -27,13 +27,51 @@
     "itzbund/gsb-core": "^5.5",
     "typo3/cms-core": "^13.4"
   },
+  "require-dev": {
+    "ergebnis/composer-normalize": "2.52.0",
+    "helmich/typo3-typoscript-lint": "3.3.0",
+    "phpstan/phpstan": "^2.1",
+    "seld/jsonlint": "1.12.1",
+    "typo3/coding-standards": "0.9.0"
+  },
   "suggest": {
     "itzbund/gsb-solr": "KERN templates for the Solr search page",
     "typo3/cms-form": "KERN templates for EXT:form"
   },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true,
+      "typo3/class-alias-loader": true,
+      "typo3/cms-composer-installers": true
+    },
+    "bin-dir": ".build/bin",
+    "sort-packages": true,
+    "vendor-dir": ".build/vendor"
+  },
   "extra": {
     "typo3/cms": {
-      "extension-key": "gsb_kern"
+      "extension-key": "gsb_kern",
+      "web-dir": ".build/public"
     }
+  },
+  "scripts": {
+    "composer:normalize": "@composer normalize --dry-run --no-check-lock",
+    "composer:normalize:fix": "@composer normalize --no-check-lock",
+    "composer:validate": "@composer validate --strict",
+    "json:lint": "find . -path ./.build -prune -o -path ./.git -prune -o -name '*.json' -print | xargs -r php .build/bin/jsonlint -q",
+    "phpcs:analyze": "php .build/bin/php-cs-fixer fix --config .php-cs-fixer.dist.php -v --dry-run --using-cache no --diff",
+    "phpcs:fix": "php .build/bin/php-cs-fixer fix --config .php-cs-fixer.dist.php -v --using-cache no --diff",
+    "phpstan:analyze": "php .build/bin/phpstan analyse --no-progress",
+    "qa": [
+      "@composer:validate",
+      "@composer:normalize",
+      "@json:lint",
+      "@yaml:lint",
+      "@typoscript:lint",
+      "@phpcs:analyze",
+      "@phpstan:analyze"
+    ],
+    "typoscript:lint": "php .build/bin/typoscript-lint -c .typoscript-lint.yml --ansi -n --fail-on-warnings -vvv Configuration/TypoScript Configuration/TsConfig Configuration/Sets",
+    "yaml:lint": "find . -path ./.build -prune -o -path ./.git -prune -o \\( -name '*.yaml' -o -name '*.yml' \\) -print | xargs -r php .build/bin/yaml-lint --parse-tags"
   }
 }

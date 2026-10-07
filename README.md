@@ -90,6 +90,16 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['locallangXMLOverride']['de']['EXT:gsb_kern/R
 Bump `VERSION` and `SHA256` in `Build/kern-update.sh`, run it, check the frontend. KERN is licensed under EUPL-1.2
 (`Resources/Public/Vendor/kern/LICENSE.md`).
 
+## Development
+
+```bash
+composer install     # dev tools go to .build/ (PHP 8.3 or 8.4)
+composer qa          # composer validate/normalize, JSON/YAML/TypoScript lint, php-cs-fixer, PHPStan
+```
+
+GitHub Actions runs the same checks (PHP 8.3 and 8.4) plus `shellcheck` on `Build/` for every push and pull request.
+Releases are tags on `main` (`0.1.0`, …); development files are excluded from the archive Composer installs.
+
 ## License
 
 GPL-3.0-or-later (as GSB).
